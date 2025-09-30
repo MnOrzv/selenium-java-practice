@@ -1,5 +1,4 @@
 name: Java Selenium Practice ManuelORZV
-run: mvn test -DsuiteXmlFile=testng.xml
 
 on:
   push:
@@ -23,8 +22,8 @@ jobs:
       - name: Compile the project
         run: mvn compile
 
-      - name: Ejecutar pruebas
-        run: mvn test
+      - name: TestNG
+        run: mvn test -DsuiteXmlFile=testng.xml
 
       - name: Deployment when the test passed
         if: success()

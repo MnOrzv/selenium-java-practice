@@ -1,0 +1,31 @@
+name: Java Selenium Practice ManuelORZV
+run: mvn test -DsuiteXmlFile=testng.xml
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+
+      - name: Compile the project
+        run: mvn compile
+
+      - name: Ejecutar pruebas
+        run: mvn test
+
+      - name: Deployment when the test passed
+        if: success()
+        run: echo "Test Completed!... "
